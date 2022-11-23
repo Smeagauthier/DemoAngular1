@@ -9,6 +9,7 @@ import { ClientsComponent } from './components/clients/clients.component';
 import { CommandesComponent } from './components/commandes/commandes.component';
 import {HttpClientModule} from "@angular/common/http";
 import {FormsModule} from "@angular/forms";
+import { ExercicesComponent } from './components/exercices/exercices.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import {FormsModule} from "@angular/forms";
     MainMenuComponent,
     HomeComponent,
     ClientsComponent,
-    CommandesComponent
+    CommandesComponent,
+    ExercicesComponent
   ],
   imports: [
     BrowserModule,

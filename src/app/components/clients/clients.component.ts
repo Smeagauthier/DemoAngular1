@@ -11,7 +11,7 @@ export class ClientsComponent implements OnInit {
   constructor(private clientsService:ClientsService) { }
 
   ngOnInit(): void {
-    this.onSearchById(1);
+    //this.onSearchById(1);
   }
 
   onSearchById(idclient:number) {
