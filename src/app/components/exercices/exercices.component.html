@@ -1,1 +1,38 @@
-<p>exercices works!</p>
+<!--<div>
+  numero du client :  <input type = "text" [(ngModel)]="numrech"><br>
+  <button (click)="recherche()">recherche</button>
+</div><br>-->
+<form #f=ngForm (ngSubmit)="rechParForm(f.value)">
+  numero : <input type="text" ngModel name="numero">
+</form><br>
+
+<ng-template [ngIf]="client" [ngIfElse]="inconnu">
+  Client : {{client.nom}}
+</ng-template>
+<ng-template #inconnu>
+  <div>inconnu</div>
+</ng-template>
+
+<br>
+<form #a=ngForm (ngSubmit)="rechercheParNom(a.value)">
+  Recherche par nom : <input type="text" ngModel name="nom">
+</form><br>
+
+<ng-template [ngIf]="clistrouv">
+  <ng-template [ngIf]="clistrouv.length>0" [ngIfElse]="inconnu">
+    <ul>
+      <li *ngFor="let cl of clistrouv">
+        {{cl.nom}} {{cl.prenom}} {{cl.tel}} <button (click)="effacer(cl)">Effacer</button>
+      </li>
+    </ul>
+  </ng-template>
+  <ng-template #inconnu>
+    <div>inconnu</div>
+  </ng-template>
+</ng-template>
+
+
+
+
+
+
