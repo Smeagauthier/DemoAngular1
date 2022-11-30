@@ -50,7 +50,6 @@ export class ExercicesComponent implements OnInit {
       }
     })
   }
-
   rechercheParNom(value: any) {
     this.clientService.getClientNom(value.nom).subscribe({
       next: data => {
@@ -58,7 +57,6 @@ export class ExercicesComponent implements OnInit {
       }
     })
   }
-
   effacer(c: Client) {
     this.clientService.deleteClient(c).subscribe({
       next: data => {
@@ -72,7 +70,4 @@ export class ExercicesComponent implements OnInit {
       error: error => {alert("erreur ");this.client = null;}
     })
   }
-
-
-
 }

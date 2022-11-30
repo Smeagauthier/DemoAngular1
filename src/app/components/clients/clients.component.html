@@ -1,1 +1,60 @@
-<p>clients works!</p>
+<nav class="navbar navbar-expand-sm bg-light navbar-light">
+  <ul class="navbar navbar-nav">
+    <li>
+      <form #f="ngForm" (ngSubmit)="onSearch(f.value)" class="form-inline">
+        <input ngModel name="nom" type="text" >
+        <button class="btn btn-sm btn-outline-info m-lg-2">
+<span class = "fa fa-search">
+</span>
+        </button>
+      </form>
+    </li>
+    <li>
+      <button (click)="onNewClient()" class="btn btn-sm btn-outline-info
+ms-2">New</button>
+    </li>
+  </ul>
+</nav>
+<ng-container *ngIf="clients">
+  <ng-container *ngIf="clients.length>0 else inconnu">
+    <table class="table">
+      <thead>
+      <th>IdClient</th>
+      <th>Nom</th>
+      <th>Prenom</th>
+      <th>CP</th>
+      <th>Localite</th>
+      <th>Rue</th>
+      <th>Num</th>
+      <th>Tel</th>
+      <th>Del</th>
+      <th>Edit</th>
+      </thead>
+      <tbody>
+      <tr *ngFor="let c of clients">
+        <td>{{c.idclient}}</td>
+        <td>{{c.nom}}</td>
+        <td>{{c.prenom}}</td>
+        <td>{{c.cp}}</td>
+        <td>{{c.localite}}</td>
+        <td>{{c.rue}}</td>
+        <td>{{c.num}}</td>
+        <td>{{c.tel}}</td>
+        <td>
+          <button (click)=onDelete(c) class="btn btn-danger">
+            <span class = "fa fa-trash-o"></span>
+          </button>
+        </td>
+        <td>
+          <button (click)=onEdit(c) class="btn btn-danger">
+            <span class = "fa fa-edit"></span>
+          </button>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </ng-container>
+  <ng-template #inconnu>
+    Nom inconnu
+  </ng-template>
+</ng-container>
