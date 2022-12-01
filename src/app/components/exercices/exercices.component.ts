@@ -1,9 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {ClientsService} from "../../services/clients.service";
 import {Client} from "../../entities/client.entities";
-import {Comfact} from "../../entities/comfact.entities";
-import {Observable} from "rxjs";
-import {ComfactsService} from "../../services/comfacts.service";
+import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+
 
 @Component({
   selector: 'app-exercices',
@@ -15,13 +14,20 @@ export class ExercicesComponent implements OnInit {
   numrech: number = 0;
   nom: String = "";
   clistrouv?: Client[];
+  submitted = false;
 
-  constructor(private clientService: ClientsService, private comfactService: ComfactsService) {
+  clientFormGroup?: FormGroup;
+
+  constructor(private clientService: ClientsService, private fb: FormBuilder) {
   }
 
 
   ngOnInit(): void {
-    this.onSearchById(1);
+    this.clientFormGroup = this.fb.group({
+      nom: ["", Validators.required],
+      prenom: ["", Validators.required],
+      tel: ["+(32)(0)", Validators.required]
+    })
   }
 
   onSearchById(idclient: number) {
@@ -50,6 +56,7 @@ export class ExercicesComponent implements OnInit {
       }
     })
   }
+
   rechercheParNom(value: any) {
     this.clientService.getClientNom(value.nom).subscribe({
       next: data => {
@@ -57,6 +64,7 @@ export class ExercicesComponent implements OnInit {
       }
     })
   }
+
   effacer(c: Client) {
     this.clientService.deleteClient(c).subscribe({
       next: data => {
@@ -67,7 +75,20 @@ export class ExercicesComponent implements OnInit {
           this.clistrouv?.splice(index, 1);
         }
       },
-      error: error => {alert("erreur ");this.client = null;}
+      error: error => {
+        alert("erreur ");
+        this.client = null;
+      }
     })
+  }
+
+  saveClient() {
+    this.submitted = true;
+    if (this.clientFormGroup?.invalid) alert("Encodage invalide");
+    else {
+      alert(this.clientFormGroup?.value.nom + " " +
+        this.clientFormGroup?.value.prenom + " "
+        + this.clientFormGroup?.value.tel);
+    }
   }
 }

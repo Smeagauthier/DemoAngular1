@@ -1,7 +1,7 @@
 <!--<div>
   numero du client :  <input type = "text" [(ngModel)]="numrech"><br>
   <button (click)="recherche()">recherche</button>
-</div><br>-->
+</div><br>
 <form #f=ngForm (ngSubmit)="rechParForm(f.value)">
   numero : <input type="text" ngModel name="numero">
 </form><br>
@@ -29,7 +29,44 @@
   <ng-template #inconnu>
     <div>inconnu</div>
   </ng-template>
-</ng-template>
+</ng-template>-->
+
+<br>
+<div class="container">
+  <form [formGroup]="clientFormGroup" *ngIf="clientFormGroup">
+    <div class="form-group">
+      <label>Nom</label>
+      <input type="text" formControlName="nom" class="form-control"
+             [ngClass]="{'is-invalid':submitted && clientFormGroup.controls.nom.errors, 'is-valid':submitted && !clientFormGroup.controls.nom.errors}">
+      <div class="invalid-feedback" *ngIf="submitted && clientFormGroup.controls.nom.errors">
+        <div *ngIf="clientFormGroup.controls.nom.errors.required">
+        Nom obligatoire
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label>Prénom</label>
+      <input type="text" formControlName="prenom" class="form-control"
+             [ngClass]="{'is-invalid':submitted && clientFormGroup.controls.prenom.errors, 'is-valid':submitted && !clientFormGroup.controls.prenom.errors }">
+      <div class="invalid-feedback" *ngIf="submitted && clientFormGroup.controls.prenom.errors">
+        <div *ngIf="clientFormGroup.controls.prenom.errors.required">
+        Prénom obligatoire
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label>Tel</label>
+      <input type="text" formControlName="tel" class="form-control"
+             [ngClass]="{'is-invalid':submitted && clientFormGroup.controls.tel.errors, 'is-valid':submitted && !clientFormGroup.controls.tel.errors}">
+      <div class="invalid-feedback" *ngIf="submitted && clientFormGroup.controls.tel.errors">
+        <div *ngIf="clientFormGroup.controls.tel.errors.required">
+        Tel obligatoire
+        </div>
+      </div>
+    </div>
+    <button (click)="saveClient()">Valider</button>
+  </form>
+</div>
 
 
 
