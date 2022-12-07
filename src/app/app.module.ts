@@ -11,6 +11,7 @@ import {HttpClientModule} from "@angular/common/http";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { ExercicesComponent } from './components/exercices/exercices.component';
 import { NewclientComponent } from './components/newclient/newclient.component';
+import { EditclientComponent } from './components/editclient/editclient.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { NewclientComponent } from './components/newclient/newclient.component';
     ClientsComponent,
     CommandesComponent,
     ExercicesComponent,
-    NewclientComponent
+    NewclientComponent,
+    EditclientComponent
   ],
     imports: [
         BrowserModule,

@@ -29,7 +29,8 @@ export class ClientsComponent implements OnInit {
 
   onNewClient() {
     this.router.navigateByUrl("newClient")
-  } //développé plus tard
+  }
+
   onDelete(c: Client) {
     let v = confirm('êtes vous sûr de vouloir supprimer ? ');
     if (v) {
@@ -53,5 +54,6 @@ export class ClientsComponent implements OnInit {
   }
 
   onEdit(c: Client) {
-  }//développé plus tard
+    this.router.navigateByUrl("editClient/"+c.idclient);
+  }
 }

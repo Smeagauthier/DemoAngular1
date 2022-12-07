@@ -1,26 +1,30 @@
 <div class="container">
   <form [formGroup]="clientFormGroup" *ngIf="clientFormGroup">
-    <div class="form-group">
+    <div class = "form-group">
+      <label>IDCLIENT</label>
+      <input type ="text" class="form-control" formControlName="idclient" readonly>
+    </div>
+    <div class = "form-group">
       <label>Nom</label>
-      <input type="text" class="form-control" formControlName="nom" [ngClass]="{'is-invalid': submitted && clientFormGroup.controls.nom.errors}">
+      <input type ="text" class="form-control" formControlName="nom" [ngClass]="{'is-invalid': submitted && clientFormGroup.controls.nom.errors}">
       <div *ngIf="submitted && clientFormGroup.controls.nom.errors" class="invalid-feedback">
         <div *ngIf="clientFormGroup.controls.nom.errors.required">
           Nom obligatoire
         </div>
       </div>
     </div>
-    <div class="form-group">
+    <div class = "form-group">
       <label>Prénom</label>
-      <input type="text" class="form-control" formControlName="prenom" [ngClass]="{'is-invalid': submitted && clientFormGroup.controls.prenom.errors}">
-      <div *ngIf="submitted && clientFormGroup.controls.prenom.errors" class="invalid-feedback">
+      <input type ="text" class="form-control" formControlName="prenom" [ngClass]="{'is-invalid': submitted && clientFormGroup.controls.prenom.errors}">
+      <div *ngIf="submitted && clientFormGroup.controls.prenom.errors" class ="invalid-feedback">
         <div *ngIf="clientFormGroup.controls.prenom.errors.required">
           Prénom obligatoire
         </div>
       </div>
     </div>
-    <div class="form-group">
+    <div class = "form-group">
       <label>CP</label>
-      <input type="text" class="form-control" formControlName="cp" [ngClass]="{'is-invalid': submitted && clientFormGroup.controls.cp.errors}">
+      <input type ="text" class="form-control" formControlName="cp" [ngClass]="{'is-invalid': submitted && clientFormGroup.controls.cp.errors}">
       <div *ngIf="submitted && clientFormGroup.controls.cp.errors" class="invalid-feedback">
         <div *ngIf="clientFormGroup.controls.cp.errors.required">
           code postal obligatoire
@@ -28,49 +32,47 @@
         <div *ngIf="clientFormGroup.controls.cp.errors.min">
           le code postal doit être supérieur ou égal à 1000
         </div>
-        <div *ngIf="clientFormGroup.controls.cp.errors.max">
-          le code postal doit être inférieur ou égal à 9999
-        </div>
       </div>
     </div>
-    <div class="form-group">
+    <div class = "form-group">
       <label>Localité</label>
-      <input type="text" class="form-control" formControlName="localite" [ngClass]="{'is-invalid': submitted && clientFormGroup.controls.localite.errors}">
-      <div *ngIf="submitted && clientFormGroup.controls.localite.errors" class="invalid-feedback">
+      <input type ="text" class="form-control" formControlName="localite" [ngClass]="{'is-invalid': submitted && clientFormGroup.controls.localite.errors}">
+      <div *ngIf="submitted && clientFormGroup.controls.localite.errors" class ="invalid-feedback">
         <div *ngIf="clientFormGroup.controls.localite.errors.required">
           Localité obligatoire
         </div>
       </div>
     </div>
-    <div class="form-group">
+    <div class = "form-group">
       <label>Rue</label>
-      <input type="text" class="form-control" formControlName="rue" [ngClass]="{'is-invalid': submitted && clientFormGroup.controls.rue.errors}">
+      <input type ="text" class="form-control" formControlName="rue" [ngClass]="{'is-invalid': submitted && clientFormGroup.controls.rue.errors}">
       <div *ngIf="submitted && clientFormGroup.controls.rue.errors" class="invalid-feedback">
         <div *ngIf="clientFormGroup.controls.rue.errors.required">
           Rue obligatoire
         </div>
       </div>
     </div>
-    <div class="form-group">
+    <div class = "form-group">
       <label>Num</label>
-      <input type="text" class="form-control" formControlName="num" [ngClass]="{'is-invalid': submitted && clientFormGroup.controls.num.errors}">
+      <input type ="text" class="form-control" formControlName="num" [ngClass]="{'is-invalid': submitted && clientFormGroup.controls.num.errors}">
       <div *ngIf="submitted && clientFormGroup.controls.num.errors" class="invalid-feedback">
         <div *ngIf="clientFormGroup.controls.num.errors.required">
           Numéro obligatoire
         </div>
       </div>
     </div>
-    <div class="form-group">
+    <div class = "form-group">
       <label>Tel</label>
-      <input type="text" class="form-control" formControlName="tel" [ngClass]="{'is-invalid': submitted && clientFormGroup.controls.tel.errors}">
+      <input type ="text" class="form-control" formControlName="tel" [ngClass]="{'is-invalid': submitted && clientFormGroup.controls.tel.errors}">
       <div *ngIf="submitted && clientFormGroup.controls.tel.errors" class="invalid-feedback">
         <div *ngIf="clientFormGroup.controls.tel.errors.required">
           Téléphone obligatoire
         </div>
       </div>
     </div>
-    <button (click)="onSaveClient()" class="btn btn-success">
+    <button (click)="onUpdateClient()" class="btn btn-success">
       Save
     </button>
   </form>
 </div>
+

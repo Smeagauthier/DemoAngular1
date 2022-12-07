@@ -91,4 +91,33 @@ export class ExercicesComponent implements OnInit {
         + this.clientFormGroup?.value.tel);
     }
   }
+
+  rechercheParID(value: any) {
+    let numero: number = value.idclient;
+    this.clientService.getClient(numero).subscribe({
+      next: data => {
+        this.client = data;
+        this.clientFormGroup = this.fb.group(
+          {
+            nom: [data.nom, Validators.required],
+            prenom: [data.prenom, Validators.required],
+            tel: [data.tel, Validators.required]
+          }
+        )
+      },
+      error: error => {
+        alert("erreur ");
+        this.client = null
+      }
+    })
+  }
+
+  majClient() {
+    this.submitted = true;
+    if (this.clientFormGroup?.invalid) {
+      return
+    }
+    alert("maj OK");
+  }
+
 }
