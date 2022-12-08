@@ -2,6 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {ClientsService} from "../../services/clients.service";
 import {Client} from "../../entities/client.entities";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {Comfact} from "../../entities/comfact.entities";
+import {ComfactsService} from "../../services/comfacts.service";
 
 
 @Component({
@@ -14,11 +16,13 @@ export class ExercicesComponent implements OnInit {
   numrech: number = 0;
   nom: String = "";
   clistrouv?: Client[];
+  comTrouv ?: Comfact;
   submitted = false;
 
   clientFormGroup?: FormGroup;
+  comfactFormGroup?: FormGroup;
 
-  constructor(private clientService: ClientsService, private fb: FormBuilder) {
+  constructor(private clientService: ClientsService, private fb: FormBuilder, private comfactService: ComfactsService) {
   }
 
 
@@ -120,4 +124,18 @@ export class ExercicesComponent implements OnInit {
     alert("maj OK");
   }
 
+  rechercheComParID(value: any) {
+    this.comfactService.search(value.idcom).subscribe({
+        next: data => {
+          this.comfactFormGroup = this.fb.group(
+            {
+              etat: [data.etat, [Validators.required, Validators.pattern("^(C|F|P)$")]],
+              montant: [data.montant, Validators.required],
+            }
+          )
+        },
+        error: error => alert("commande introuvable")
+      }
+    )
+  }
 }

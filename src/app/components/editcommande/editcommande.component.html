@@ -1,0 +1,64 @@
+<div class="container" *ngIf="deleted == false">
+  <form [formGroup]="comfactFormGroup" *ngIf="comfactFormGroup">
+    <div class = "form-group">
+      <label>NUMERO DE COMMANDE</label>
+      <input type ="text" class="form-control" formControlName="numcommande" readonly>
+    </div>
+    <div class = "form-group">
+      <label>NUMERO DE FACTURE</label>
+      <input type ="text" class="form-control" formControlName="numfact" [ngClass]="{'is-invalid': submitted && comfactFormGroup.controls.numfact.errors}">
+      <div *ngIf="submitted && comfactFormGroup.controls.numfact.errors" class ="invalid-feedback">
+        <div *ngIf="comfactFormGroup.controls.numfact.errors.required">
+          numéro de facture obligatoire
+        </div>
+      </div>
+    </div>
+    <div class = "form-group">
+      <label>DATE</label>
+      <input type ="date" class="form-control" formControlName="datecom" [ngClass]="{'is-invalid': submitted && comfactFormGroup.controls.datecom.errors}">
+      <div *ngIf="submitted && comfactFormGroup.controls.datecom.errors" class ="invalid-feedback">
+        <div *ngIf="comfactFormGroup.controls.datecom.errors.required">
+          Date de commande obligatoire
+        </div>
+      </div>
+    </div>
+    <div class = "form-group">
+      <label>ETAT</label>
+      <select formControlName="etat" [ngClass]="{'is-invalid': submitted && comfactFormGroup.controls.etat.errors}">
+        <div *ngIf="submitted && comfactFormGroup.controls.etat.errors" class ="invalid-feedback">
+          <div *ngIf="comfactFormGroup.controls.etat.errors.required">
+            état obligatoire
+          </div>
+          <div *ngIf="comfactFormGroup.controls.etat.errors.pattern">
+            C,F ou P uniquement
+          </div>
+        </div>
+        <option>C</option>
+        <option>F</option>
+        <option>P</option>
+      </select>
+    </div>
+    <div class = "form-group">
+      <label>MONTANT</label>
+      <input type ="text" class="form-control" formControlName="montant" [ngClass]="{'is-invalid': submitted &&comfactFormGroup.controls.montant.errors}">
+      <div *ngIf="submitted &&comfactFormGroup.controls.montant.errors" class ="invalid-feedback">
+        <div *ngIf="comfactFormGroup.controls.montant.errors.required">
+          Montant obligatoire
+        </div>
+      </div>
+    </div>
+    <nav class="navbar navbar-expand-sm bg-light navbar-light">
+      <ul class="navbar navbar-nav">
+        <li class="nav-item">
+          <button (click)="onUpdateComfact()" class="btn btn-success">
+            Save
+          </button>
+        </li>
+        <li class="nav-item">
+          <button (click)="onDeleteComfact()" class="btn btn-success">
+            Delete
+          </button>
+        </li>
+      </ul>
+    </nav>
+  </form>

@@ -2,6 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {ClientsService} from '../../services/clients.service';
 import {ActivatedRoute} from '@angular/router';
+import {Comfact} from "../../entities/comfact.entities";
+import {ComfactsService} from "../../services/comfacts.service";
 
 @Component({
   selector: 'app-editclient',
@@ -12,9 +14,10 @@ export class EditclientComponent implements OnInit {
   clientFormGroup?: FormGroup;
   submitted = false;
   idClient: number;
+  comfacts?:Comfact[];
 
   constructor(private clientService: ClientsService, private fb:
-    FormBuilder, activatedRoute: ActivatedRoute) {
+    FormBuilder, activatedRoute: ActivatedRoute, private comfactService: ComfactsService) {
     this.idClient = activatedRoute.snapshot.params.idclient;
   }
 
@@ -39,7 +42,6 @@ export class EditclientComponent implements OnInit {
     if (this.clientFormGroup?.invalid) {
       return;
     }
-
     this.clientService.updateClient(this.clientFormGroup?.value).subscribe(data => {
         alert('maj ok')
       },
@@ -47,4 +49,12 @@ export class EditclientComponent implements OnInit {
         alert(err.headers.get("error"));
       });
   }
+
+  onShowComClient(){
+    this.comfactService.getComfactsClient(this.idClient).subscribe({
+      next: data => this.comfacts = data,
+      error: err => alert("Erreur de recherche de commandes")
+    })
+  }
+
 }
