@@ -1,0 +1,32 @@
+<div class="container">
+  <form [formGroup]="comfactFormGroup" *ngIf="comfactFormGroup">
+    <table class="table">
+      <thead>
+      <th>Numcommande</th>
+      <th>Numfact</th>
+      <th>Datecom</th>
+      <th>Etat</th>
+      <th>Montant</th>
+      </thead>
+      <tbody>
+      <td *ngIf="cf ;else vide">{{cf.numcommande}} </td>
+      <ng-template #vide><td></td></ng-template>
+      <td></td>
+      <td> <input type ="date" class="form-control"
+                  formControlName="datecom"></td>
+      <td>
+        <select formControlName="etat">
+          <option>C</option>
+          <option>F</option>
+          <option>P</option>
+        </select>
+      </td>
+      <td> <input type ="text" class="form-control"
+                  formControlName="montant"></td>
+      </tbody>
+    </table>
+    <button (click)="onSaveComfact()" class="btn btn-success">
+      Save
+    </button>
+  </form>
+</div>

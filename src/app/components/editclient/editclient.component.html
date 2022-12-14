@@ -84,7 +84,7 @@
       Commandes
     </button>
   </form>
-</div>
+
 
 <ng-container *ngIf="comfacts">
   <ng-container *ngIf="comfacts.length>0 else vide">
@@ -111,3 +111,5 @@
     Aucune commande pour ce client
   </ng-template>
 </ng-container>
+<app-new-comfact [cliact] = "clientFormGroup" (newComfact)="addComfact($event)"></app-new-comfact>
+</div>

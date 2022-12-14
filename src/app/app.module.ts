@@ -13,6 +13,7 @@ import { ExercicesComponent } from './components/exercices/exercices.component';
 import { NewclientComponent } from './components/newclient/newclient.component';
 import { EditclientComponent } from './components/editclient/editclient.component';
 import { EditcommandeComponent } from './components/editcommande/editcommande.component';
+import { NewComfactComponent } from './components/new-comfact/new-comfact.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { EditcommandeComponent } from './components/editcommande/editcommande.co
     ExercicesComponent,
     NewclientComponent,
     EditclientComponent,
-    EditcommandeComponent
+    EditcommandeComponent,
+    NewComfactComponent
   ],
     imports: [
         BrowserModule,

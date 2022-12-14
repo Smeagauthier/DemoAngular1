@@ -57,4 +57,7 @@ export class EditclientComponent implements OnInit {
     })
   }
 
+  addComfact($event: Comfact) {
+    this.comfacts?.push($event);
+  }
 }
